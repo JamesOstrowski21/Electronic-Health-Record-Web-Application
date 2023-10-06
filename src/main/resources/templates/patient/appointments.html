@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+th:replace = "patient_dash::layout(~{::section})">
+<head>
+    <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" href="" th:href="@{/css/style.css}">
+<style>
+.body{
+	width: 100%;
+	height:100%;
+	overflow: hidden;
+	background-image: url(../images/background.jpg);
+}
+</style>
+</head>
+  <body>
+      <section>
+        <div class="inner-layer">
+            <div class="container">
+              <div class="row no-margin">
+                  <div class="col-sm-7">
+                      <div class="content">
+                          <h1>Schedule Your Appointment Today!</h1>
+                      </div>
+                  </div>
+                  <div class="col-sm-5">
+                      <div class="form-data">
+                        <form action="" method="post">
+                          <div class="form-head">
+                              <h2>Schedule Appointemnt</h2>
+                              <div th:if="${param.submit}" class="alert alert-success">
+                                Logout Sucessful</div>
+                          </div>
+                          <div class="form-body">
+                              <div class="row form-row">
+                                <select class="form-control" name = "doctorName">
+                                  <option value="">-- Select Doctor --</option>
+                                  <th:block th:each="employee : ${employees}">
+                                    <option th:value="${employee.id}" th:text="${employee.firstName + ' ' + employee.lastName}"></option>
+                                  </th:block>
+                                </select>
+                              </div>
+                              <div class="row form-row">
+                                <input type="datetime-local" class = "form-control" name = "appointmentDate">
+                              </div>
+                              <div class="row form-row">
+                                <button type = "submit" class ="btn btn-success btn-appointment">
+                                  Book Appointment
+                                </button>
+                                
+                              </div>
+
+                          </div>
+                        </form>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  </body>
+</html>
